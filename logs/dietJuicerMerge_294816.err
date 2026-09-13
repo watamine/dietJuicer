@@ -1,0 +1,34 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 100
+Job counts:
+	count	jobs
+	1	all
+	1	hic
+	1	hic30
+	1	inter
+	1	inter30
+	1	mergedNoDups
+	1	norm
+	1	norm30
+	8
+
+[Sun Sep 13 17:08:00 2026]
+rule mergedNoDups:
+    input: /home/watamine/Hic/juicer_test/work_1/aligned/merged_dedup.bam, /home/watamine/Hic/juicer_test/work_2/aligned/merged_dedup.bam
+    output: output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz, output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+    log: output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err
+    jobid: 6
+    benchmark: output/PROJ_CELL_WT/benchmarks/PROJ_CELL_WT_merged_nodups.tsv
+    wildcards: group=PROJ_CELL_WT
+    threads: 8
+
+
+        tmp_dir=$(mktemp -d -p $PWD)
+        cmd="sort --parallel=8 -T $tmp_dir -m -k2,2d -k6,6d "
+        for i in /home/watamine/Hic/juicer_test/work_1/aligned/merged_dedup.bam /home/watamine/Hic/juicer_test/work_2/aligned/merged_dedup.bam; do cmd="$cmd <(gunzip -c '$i')"; done
+        eval "$cmd" | pigz -p 8 > output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz 2> output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err
+        rm -rf $tmp_dir
+        touch output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+        
+Submitted job 6 with external jobid '294817'.

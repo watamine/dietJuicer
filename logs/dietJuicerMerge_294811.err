@@ -1,0 +1,180 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 100
+Job counts:
+	count	jobs
+	1	all
+	1	hic
+	1	hic30
+	1	inter
+	1	inter30
+	1	mergedNoDups
+	1	norm
+	1	norm30
+	8
+
+[Sun Sep 13 16:56:35 2026]
+rule mergedNoDups:
+    input: /home/watamine/Hic/juicer_test/work_1/aligned/merged_dedup.bam, /home/watamine/Hic/juicer_test/work_2/aligned/merged_dedup.bam
+    output: output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz, output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+    log: output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err
+    jobid: 6
+    benchmark: output/PROJ_CELL_WT/benchmarks/PROJ_CELL_WT_merged_nodups.tsv
+    wildcards: group=PROJ_CELL_WT
+    threads: 8
+
+
+        module load pigz
+        tmp_dir=$(mktemp -d -p $PWD)
+        cmd="sort --parallel=8 -T $tmp_dir -m -k2,2d -k6,6d "
+        for i in /home/watamine/Hic/juicer_test/work_1/aligned/merged_dedup.bam /home/watamine/Hic/juicer_test/work_2/aligned/merged_dedup.bam; do cmd="$cmd <(gunzip -c '$i')"; done
+        eval "$cmd" | pigz -p 8 > output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz 2> output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err
+        rm -rf $tmp_dir
+        touch output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+        
+Submitted job 6 with external jobid '294812'.
+[Sun Sep 13 16:56:55 2026]
+Error in rule mergedNoDups:
+    jobid: 6
+    output: output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz, output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+    log: output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err (check log file(s) for error message)
+    shell:
+        
+        module load pigz
+        tmp_dir=$(mktemp -d -p $PWD)
+        cmd="sort --parallel=8 -T $tmp_dir -m -k2,2d -k6,6d "
+        for i in /home/watamine/Hic/juicer_test/work_1/aligned/merged_dedup.bam /home/watamine/Hic/juicer_test/work_2/aligned/merged_dedup.bam; do cmd="$cmd <(gunzip -c '$i')"; done
+        eval "$cmd" | pigz -p 8 > output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz 2> output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err
+        rm -rf $tmp_dir
+        touch output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 294812
+
+Error executing rule mergedNoDups on cluster (jobid: 6, external: 294812, jobscript: /misc/home/watamine/bin/dietJuicer/.snakemake/tmp.fcyggzxk/snakejob.mergedNoDups.6.sh). For error details see the cluster log and the log files of the involved rule(s).
+Trying to restart job 6.
+
+[Sun Sep 13 16:56:55 2026]
+rule mergedNoDups:
+    input: /home/watamine/Hic/juicer_test/work_1/aligned/merged_dedup.bam, /home/watamine/Hic/juicer_test/work_2/aligned/merged_dedup.bam
+    output: output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz, output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+    log: output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err
+    jobid: 6
+    benchmark: output/PROJ_CELL_WT/benchmarks/PROJ_CELL_WT_merged_nodups.tsv
+    wildcards: group=PROJ_CELL_WT
+    threads: 8
+
+
+        module load pigz
+        tmp_dir=$(mktemp -d -p $PWD)
+        cmd="sort --parallel=8 -T $tmp_dir -m -k2,2d -k6,6d "
+        for i in /home/watamine/Hic/juicer_test/work_1/aligned/merged_dedup.bam /home/watamine/Hic/juicer_test/work_2/aligned/merged_dedup.bam; do cmd="$cmd <(gunzip -c '$i')"; done
+        eval "$cmd" | pigz -p 8 > output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz 2> output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err
+        rm -rf $tmp_dir
+        touch output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+        
+Submitted job 6 with external jobid '294813'.
+[Sun Sep 13 16:57:05 2026]
+Error in rule mergedNoDups:
+    jobid: 6
+    output: output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz, output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+    log: output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err (check log file(s) for error message)
+    shell:
+        
+        module load pigz
+        tmp_dir=$(mktemp -d -p $PWD)
+        cmd="sort --parallel=8 -T $tmp_dir -m -k2,2d -k6,6d "
+        for i in /home/watamine/Hic/juicer_test/work_1/aligned/merged_dedup.bam /home/watamine/Hic/juicer_test/work_2/aligned/merged_dedup.bam; do cmd="$cmd <(gunzip -c '$i')"; done
+        eval "$cmd" | pigz -p 8 > output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz 2> output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err
+        rm -rf $tmp_dir
+        touch output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 294813
+
+Error executing rule mergedNoDups on cluster (jobid: 6, external: 294813, jobscript: /misc/home/watamine/bin/dietJuicer/.snakemake/tmp.fcyggzxk/snakejob.mergedNoDups.6.sh). For error details see the cluster log and the log files of the involved rule(s).
+Trying to restart job 6.
+
+[Sun Sep 13 16:57:05 2026]
+rule mergedNoDups:
+    input: /home/watamine/Hic/juicer_test/work_1/aligned/merged_dedup.bam, /home/watamine/Hic/juicer_test/work_2/aligned/merged_dedup.bam
+    output: output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz, output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+    log: output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err
+    jobid: 6
+    benchmark: output/PROJ_CELL_WT/benchmarks/PROJ_CELL_WT_merged_nodups.tsv
+    wildcards: group=PROJ_CELL_WT
+    threads: 8
+
+
+        module load pigz
+        tmp_dir=$(mktemp -d -p $PWD)
+        cmd="sort --parallel=8 -T $tmp_dir -m -k2,2d -k6,6d "
+        for i in /home/watamine/Hic/juicer_test/work_1/aligned/merged_dedup.bam /home/watamine/Hic/juicer_test/work_2/aligned/merged_dedup.bam; do cmd="$cmd <(gunzip -c '$i')"; done
+        eval "$cmd" | pigz -p 8 > output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz 2> output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err
+        rm -rf $tmp_dir
+        touch output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+        
+Submitted job 6 with external jobid '294814'.
+[Sun Sep 13 16:57:25 2026]
+Error in rule mergedNoDups:
+    jobid: 6
+    output: output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz, output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+    log: output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err (check log file(s) for error message)
+    shell:
+        
+        module load pigz
+        tmp_dir=$(mktemp -d -p $PWD)
+        cmd="sort --parallel=8 -T $tmp_dir -m -k2,2d -k6,6d "
+        for i in /home/watamine/Hic/juicer_test/work_1/aligned/merged_dedup.bam /home/watamine/Hic/juicer_test/work_2/aligned/merged_dedup.bam; do cmd="$cmd <(gunzip -c '$i')"; done
+        eval "$cmd" | pigz -p 8 > output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz 2> output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err
+        rm -rf $tmp_dir
+        touch output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 294814
+
+Error executing rule mergedNoDups on cluster (jobid: 6, external: 294814, jobscript: /misc/home/watamine/bin/dietJuicer/.snakemake/tmp.fcyggzxk/snakejob.mergedNoDups.6.sh). For error details see the cluster log and the log files of the involved rule(s).
+Trying to restart job 6.
+
+[Sun Sep 13 16:57:25 2026]
+rule mergedNoDups:
+    input: /home/watamine/Hic/juicer_test/work_1/aligned/merged_dedup.bam, /home/watamine/Hic/juicer_test/work_2/aligned/merged_dedup.bam
+    output: output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz, output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+    log: output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err
+    jobid: 6
+    benchmark: output/PROJ_CELL_WT/benchmarks/PROJ_CELL_WT_merged_nodups.tsv
+    wildcards: group=PROJ_CELL_WT
+    threads: 8
+
+
+        module load pigz
+        tmp_dir=$(mktemp -d -p $PWD)
+        cmd="sort --parallel=8 -T $tmp_dir -m -k2,2d -k6,6d "
+        for i in /home/watamine/Hic/juicer_test/work_1/aligned/merged_dedup.bam /home/watamine/Hic/juicer_test/work_2/aligned/merged_dedup.bam; do cmd="$cmd <(gunzip -c '$i')"; done
+        eval "$cmd" | pigz -p 8 > output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz 2> output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err
+        rm -rf $tmp_dir
+        touch output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+        
+Submitted job 6 with external jobid '294815'.
+[Sun Sep 13 16:57:35 2026]
+Error in rule mergedNoDups:
+    jobid: 6
+    output: output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz, output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+    log: output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err (check log file(s) for error message)
+    shell:
+        
+        module load pigz
+        tmp_dir=$(mktemp -d -p $PWD)
+        cmd="sort --parallel=8 -T $tmp_dir -m -k2,2d -k6,6d "
+        for i in /home/watamine/Hic/juicer_test/work_1/aligned/merged_dedup.bam /home/watamine/Hic/juicer_test/work_2/aligned/merged_dedup.bam; do cmd="$cmd <(gunzip -c '$i')"; done
+        eval "$cmd" | pigz -p 8 > output/PROJ_CELL_WT/PROJ_CELL_WT_merged_nodups.txt.gz 2> output/PROJ_CELL_WT/logs/PROJ_CELL_WT_merged_nodups.err
+        rm -rf $tmp_dir
+        touch output/PROJ_CELL_WT/PROJ_CELL_WT_mergedNoDups_done.txt
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: 294815
+
+Error executing rule mergedNoDups on cluster (jobid: 6, external: 294815, jobscript: /misc/home/watamine/bin/dietJuicer/.snakemake/tmp.fcyggzxk/snakejob.mergedNoDups.6.sh). For error details see the cluster log and the log files of the involved rule(s).
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /misc/home/watamine/bin/dietJuicer/.snakemake/log/2026-09-13T165622.311988.snakemake.log

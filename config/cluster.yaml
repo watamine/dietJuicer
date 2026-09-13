@@ -1,35 +1,35 @@
 __default__:
   name: "rule={rule},{wildcards}" # -J
-  partition: general # -p
-  time: 4320 # -t
+  partition: compute # -p
+  time: "3-00:00:00"  # -t
   cpusPerTask: "{threads}" # -c
-  memPerCpu: 4G # --mem-per-cpu
+  memPerCpu: 20G # --mem-per-cpu
   nodes: 1
   output: "output/logs_slurm/{rule}.{wildcards}.{jobid}.out"
   error: "output/logs_slurm/{rule}.{wildcards}.{jobid}.err"
 
 ## Multi-threaded / High-memory Rules
 align:
-  memPerCpu: 4G
+  memPerCpu: 20G
 
 sort:
-  memPerCpu: 8G
+  memPerCpu: 20G
 
 mergedSort:
-  memPerCpu: 8G
+  memPerCpu: 20G
 
 hic:
-  memPerCpu: 260G
-  time: 10080
+  memPerCpu: 26G
+  time: "7-00:00:00"
 
 hic30:
-  memPerCpu: 260G
-  time: 10080
+  memPerCpu: 26G
+  time: "7-00:00:00"
   
 norm:
-  memPerCpu: 260G
-  time: 10080
+  memPerCpu: 26G
+  time: "7-00:00:00"
   
 norm30:
-  memPerCpu: 260G
-  time: 10080
+  memPerCpu: 26G
+  time: "7-00:00:00"

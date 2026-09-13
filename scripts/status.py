@@ -6,7 +6,6 @@ jobid = sys.argv[1]
 
 status = str(subprocess.check_output("sacct -j %s --format State%%20 --noheader | head -1 | awk '{print $1}'" % jobid, shell=True).strip())
 
-
 ## Adapted from: https://github.com/Snakemake-Profiles/slurm/blob/master/%7B%7Bcookiecutter.profile_name%7D%7D/slurm-status.py
 if "BOOT_FAIL" in status:
   print("failed")
